@@ -1,20 +1,29 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class kalkulator {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    try (Scanner input = new Scanner(System.in)) {
-        System.out.println("Masukkan angka pertama: ");
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan angka pertama: ");
         double angkaPertama = input.nextDouble();
 
-        System.out.println("Masukkan angka kedua: ");
+        System.out.print("Masukkan angka kedua: ");
         double angkaKedua = input.nextDouble();
 
-        System.out.println("Hasil penjumlahan: " + (angkaPertama + angkaKedua));
-        System.out.println("Hasil pengurangan: " + (angkaPertama - angkaKedua));
-        System.out.println("Hasil perkalian: " + (angkaPertama * angkaKedua));
-        System.out.println("Hasil pembagian: " + (angkaPertama / angkaKedua));
+        tampilkanHasil("penjumlahan", angkaPertama + angkaKedua);
+        tampilkanHasil("pengurangan", angkaPertama - angkaKedua);
+        tampilkanHasil("perkalian", angkaPertama * angkaKedua);
+        tampilkanHasil("pembagian", angkaPertama / angkaKedua);
+
+        input.close();
     }
-  }
+
+    public static void tampilkanHasil(String operasi, double hasil) {
+        DecimalFormat format = new DecimalFormat("0.##");
+        String hasilFormat = format.format(hasil);
+        System.out.println("Hasil " + operasi + ": " + hasilFormat);
+    }
 }
